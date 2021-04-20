@@ -1,0 +1,34 @@
+{
+  "name": "socket.io-msgpack-javascript",
+  "version": "1.0.0",
+  "description": "socket.io parser based on msgpack",
+  "main": "index",
+  "dependencies": {
+    "@msgpack/msgpack": "2.5.1",
+    "component-emitter": "1.3.0",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.1",
+    "mocha": "^8.2.0",
+    "prettier": "^2.1.2",
+    "socket.io": "^3.0.0-rc3",
+    "socket.io-client": "^3.0.0-rc3"
+  },
+  "scripts": {
+    "test": "npm run mocha test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@+https://github.com/nmargaritis/socket.io-msgpack-javascript.git"
+  },
+  "author": "Nikolaos Margaritis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nmargaritis/socket.io-msgpack-javascript/issues"
+  },
+  "homepage": "https://github.com/nmargaritis/socket.io-msgpack-javascript#readme",
+  "files": [
+    "index.js"
+  ]
+}
