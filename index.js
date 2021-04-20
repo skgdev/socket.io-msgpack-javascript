@@ -1,9 +1,12 @@
-exports = {};
+const buildEncoder = require('./lib/encoder');
+const buildDecoder = require('./lib/decoder');
+const PacketType = require('./lib/packetType');
 
 exports.build = function (options = {}) {
     return {
         protocol: 5,
-        Encoder: new Encoder(options.encoder),
-        Decoder: new Decoder(options.decoder)
-    }
-}
+        Encoder: buildEncoder(options.encoder),
+        Decoder: buildDecoder(options.decoder),
+        PacketType: PacketType,
+    };
+};
