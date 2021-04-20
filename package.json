@@ -8,13 +8,6 @@
     "component-emitter": "1.3.0",
     "lodash": "4.17.21"
   },
-  "devDependencies": {
-    "expect.js": "0.3.1",
-    "mocha": "^8.2.0",
-    "prettier": "^2.1.2",
-    "socket.io": "^3.0.0-rc3",
-    "socket.io-client": "^3.0.0-rc3"
-  },
   "scripts": {
     "test": "npm run mocha test/index.js"
   },
