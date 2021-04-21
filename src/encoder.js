@@ -7,7 +7,7 @@ const buildEncoder = (options = {}) => {
         }
 
         encode(packet) {
-            return [msgpack.encode(packet), options];
+            return [msgpack.encode(packet, this.options)];
         }
     };
 };
