@@ -4,7 +4,7 @@
   "description": "socket.io parser based on msgpack",
   "main": "index",
   "dependencies": {
-    "@msgpack/msgpack": "2.5.1",
+    "@msgpack/msgpack": "2.6.0",
     "component-emitter": "1.3.0",
     "lodash": "4.17.21"
   },
