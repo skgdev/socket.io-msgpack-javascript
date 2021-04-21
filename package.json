@@ -23,6 +23,6 @@
   "homepage": "https://github.com/nmargaritis/socket.io-msgpack-javascript#readme",
   "files": [
     "index.js",
-    "/lib"
+    "/src"
   ]
 }
