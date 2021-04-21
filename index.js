@@ -1,6 +1,6 @@
-const buildEncoder = require('./lib/encoder');
-const buildDecoder = require('./lib/decoder');
-const PacketType = require('./lib/packetType');
+const buildEncoder = require('./src/encoder');
+const buildDecoder = require('./src/decoder');
+const PacketType = require('./src/packetType');
 
 exports.build = function (options = {}) {
     return {
