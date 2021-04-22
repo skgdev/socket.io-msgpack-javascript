@@ -18,7 +18,7 @@ const buildDecoder = (options = {}) => {
         }
 
         checkPacket(decoded) {
-            var isTypeValid =
+            const isTypeValid =
                 _.isInteger(decoded.type) &&
                 decoded.type >= PacketType.CONNECT &&
                 decoded.type <= PacketType.CONNECT_ERROR;
@@ -31,7 +31,7 @@ const buildDecoder = (options = {}) => {
             if (!isDataValid(decoded)) {
                 throw new Error('invalid payload');
             }
-            var isAckValid = decoded.id === undefined || _.isInteger(decoded.id);
+            const isAckValid = decoded.id === undefined || _.isInteger(decoded.id);
             if (!isAckValid) {
                 throw new Error('invalid packet id');
             }
