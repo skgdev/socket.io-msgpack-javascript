@@ -9,14 +9,20 @@ Compatibility table:
 
 | Parser version | Socket.IO server version |
 |----------------| ------------------------ |
-| 1.x.x          | 3.x.x | 4.x.x            |
+| 1.x.x          | 3.x.x / 4.x.x            |
+
+## Installation
+
+```
+npm i @skgdev/socket.io-msgpack-javascript
+```
 
 ## Usage
 
 ```js
 const io = require('socket.io');
 const ioc = require('socket.io-client');
-const customParser = require('socket.io-msgpack-javascript');
+const customParser = require('@skgdev/socket.io-msgpack-javascript');
 const server = io(PORT, {
   parser: customParser.build({
       encoder: ?EncoderOptions,
