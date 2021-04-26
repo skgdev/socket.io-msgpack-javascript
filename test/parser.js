@@ -130,8 +130,36 @@ describe('parser', () => {
             const decoder = new Decoder();
             decoder.add('5');
         } catch (e) {
-            expect(e.message).to.match(/invalid/);
+            expect(e.message).to.match(/invalid packet type/);
         }
+    });
+
+    it('decodes with bad namespace', () => {
+        const data = {
+            type: PacketType.EVENT,
+            data: [],
+            nsp: null,
+        };
+
+        const encoder = new Encoder();
+        const encodedPackets = encoder.encode(data);
+        const decoder = new Decoder();
+
+        expect(() => decoder.add(encodedPackets[0])).to.throwException(/invalid namespace/);
+    });
+
+    it('decodes with bad payload', () => {
+        const data = {
+            type: PacketType.EVENT,
+            data: null,
+            nsp: '/',
+        };
+
+        const encoder = new Encoder();
+        const encodedPackets = encoder.encode(data);
+        const decoder = new Decoder();
+
+        expect(() => decoder.add(encodedPackets[0])).to.throwException(/invalid payload/);
     });
 
     it('throw an error upon parsing error', () => {
