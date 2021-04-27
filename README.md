@@ -1,5 +1,5 @@
 
-# socket.io-msgpack-parser
+# socket.io-msgpack-javascript
 
 An alternative to the default [socket.io-parser](https://github.com/socketio/socket.io-parser), encoding and decoding packets with [msgpack](http://msgpack.org/) official latest javascript version [msgpack-javascript](https://github.com/msgpack/msgpack-javascript)
 
@@ -14,19 +14,51 @@ Compatibility table:
 ## Installation
 
 ```
-npm i @skgdev/socket.io-msgpack-javascript
+npm i -S skgdev/socket.io-msgpack-javascript
 ```
 
-## Usage
+## Options
 
+### `EncodeOptions`
+
+Name|Type|Default
+----|----|----
+maxDepth | number | `100`
+initialBufferSize | number | `2048`
+sortKeys | boolean | false
+forceFloat32 | boolean | false
+forceIntegerToFloat | boolean | false
+ignoreUndefined | boolean | false
+
+See: [msgpack EncodeOptions](https://github.com/msgpack/msgpack-javascript#encodeoptions)
+
+[ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context) is not supported for now.
+### `DecodeOptions`
+
+Name|Type|Default
+----|----|----
+maxStrLength | number | `4_294_967_295` (UINT32_MAX)
+maxBinLength | number | `4_294_967_295` (UINT32_MAX)
+maxArrayLength | number | `4_294_967_295` (UINT32_MAX)
+maxMapLength | number | `4_294_967_295` (UINT32_MAX)
+maxExtLength | number | `4_294_967_295` (UINT32_MAX)
+
+You can use `max${Type}Length` to limit the length of each type decoded.
+
+See: [msgpack DecodeOptions](https://github.com/msgpack/msgpack-javascript#decodeoptions)
+
+[ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context) is not supported for now.
+
+## Usage
+### Example
 ```js
 const io = require('socket.io');
 const ioc = require('socket.io-client');
 const customParser = require('@skgdev/socket.io-msgpack-javascript');
 const server = io(PORT, {
   parser: customParser.build({
-      encoder: ?EncoderOptions,
-      decoder: ?DecoderOptions
+      encoder: ?EncodeOptions,
+      decoder: ?DecodeOptions
   })
 });
 
@@ -39,7 +71,7 @@ socket.on('connect', () => {
 });
 ```
 
-## Format
+### Format
 
 `socket.emit('hello', 'you')` will create the following packet:
 
