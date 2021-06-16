@@ -8,7 +8,7 @@ const buildEncoder = (options = {}) => {
 
         encode(packet) {
             const encoded = msgpack.encode(packet, this.options);
-            const buffer = Buffer.from(encoded);
+            const buffer = new Uint8Array(encoded);
 
             return [buffer];
         }
