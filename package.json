@@ -12,6 +12,7 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
+    "prepare": "npm run build",
     "test": "mocha --bail test/index.js",
     "coverage": "nyc mocha test && open coverage/lcov-report/index.html"
   },
