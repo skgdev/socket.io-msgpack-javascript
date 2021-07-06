@@ -10,7 +10,7 @@
     "lodash": "4.17.21"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c",
     "watch": "rollup -c -w",
     "prepare": "npm run build",
     "test": "mocha --bail test/index.js",
@@ -39,6 +39,7 @@
     "expect.js": "0.3.1",
     "mocha": "8.3.2",
     "nyc": "15.1.0",
+    "rimraf": "3.0.2",
     "rollup": "2.52.7"
   },
   "keywords": [
