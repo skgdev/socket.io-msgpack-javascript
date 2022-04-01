@@ -30,9 +30,9 @@ forceFloat32 | boolean | false
 forceIntegerToFloat | boolean | false
 ignoreUndefined | boolean | false
 
-See: [msgpack EncodeOptions](https://github.com/msgpack/msgpack-javascript#encodeoptions)
-
-[ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context) is not supported for now.
+See:
+- [msgpack EncodeOptions](https://github.com/msgpack/msgpack-javascript#encodeoptions)
+- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context)
 ### `DecodeOptions`
 
 Name|Type|Default
@@ -45,9 +45,9 @@ maxExtLength | number | `4_294_967_295` (UINT32_MAX)
 
 You can use `max${Type}Length` to limit the length of each type decoded.
 
-See: [msgpack DecodeOptions](https://github.com/msgpack/msgpack-javascript#decodeoptions)
-
-[ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context) is not supported for now.
+See:
+- [msgpack DecodeOptions](https://github.com/msgpack/msgpack-javascript#decodeoptions)
+- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context)
 
 ## Usage
 ### Example
