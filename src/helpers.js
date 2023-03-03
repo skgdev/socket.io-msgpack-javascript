@@ -1,14 +1,15 @@
 const PacketType = require('./packetType');
-const _ = require('lodash');
+const _isObject = require('lodash/isObject');
+const _isString = require('lodash/isString');
 
 function isDataValid(decoded) {
     switch (decoded.type) {
         case PacketType.CONNECT:
-            return decoded.data === undefined || _.isObject(decoded.data);
+            return decoded.data === undefined || _isObject(decoded.data);
         case PacketType.DISCONNECT:
             return decoded.data === undefined;
         case PacketType.CONNECT_ERROR:
-            return _.isString(decoded.data) || _.isObject(decoded.data);
+            return _isString(decoded.data) || _isObject(decoded.data);
         default:
             return Array.isArray(decoded.data);
     }

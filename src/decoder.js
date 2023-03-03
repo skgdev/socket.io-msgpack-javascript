@@ -1,6 +1,7 @@
 const msgpack = require('@msgpack/msgpack');
 const Emitter = require('component-emitter');
-const _ = require('lodash');
+const _isInteger = require('lodash/isInteger');
+const _isString = require('lodash/isString');
 const PacketType = require('./packetType');
 const { isDataValid } = require('./helpers');
 
@@ -19,19 +20,19 @@ const buildDecoder = (options = {}) => {
 
         checkPacket(decoded) {
             const isTypeValid =
-                _.isInteger(decoded.type) &&
+                _isInteger(decoded.type) &&
                 decoded.type >= PacketType.CONNECT &&
                 decoded.type <= PacketType.CONNECT_ERROR;
             if (!isTypeValid) {
                 throw new Error('invalid packet type');
             }
-            if (!_.isString(decoded.nsp)) {
+            if (!_isString(decoded.nsp)) {
                 throw new Error('invalid namespace');
             }
             if (!isDataValid(decoded)) {
                 throw new Error('invalid payload');
             }
-            const isAckValid = decoded.id === undefined || _.isInteger(decoded.id);
+            const isAckValid = decoded.id === undefined || _isInteger(decoded.id);
             if (!isAckValid) {
                 throw new Error('invalid packet id');
             }
