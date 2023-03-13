@@ -31,8 +31,7 @@
   },
   "homepage": "https://github.com/skgdev/socket.io-msgpack-javascript#readme",
   "files": [
-    "dist/index.cjs",
-    "dist/index.module.js"
+    "dist"
   ],
   "devDependencies": {
     "@babel/core": "7.21.0",
