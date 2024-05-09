@@ -3,16 +3,24 @@
   "type": "module",
   "version": "1.2.1",
   "description": "socket.io parser based on msgpack",
-  "main": "dist/index.cjs",
-  "module": "dist/index.module.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    "require": {
+      "types": "./dist/cjs/index.d.ts",
+      "default": "./dist/cjs/index.js"
+    },
+    "import": {
+      "types": "./dist/mjs/index.d.ts",
+      "default": "./dist/mjs/index.js"
+    }
+  },
   "dependencies": {
     "@msgpack/msgpack": "2.8.0",
-    "component-emitter": "1.3.0",
-    "lodash": "4.17.21"
+    "component-emitter": "2.0.0"
   },
   "scripts": {
-    "build": "rimraf dist && rollup -c",
-    "watch": "rollup -c -w",
+    "build": "rimraf dist/* && tsc -p tsconfig-mjs.json && tsc -p tsconfig-cjs.json && node ./fixup.js",
     "prepare": "npm run build",
     "test": "mocha --bail test/index.js",
     "coverage": "nyc mocha test && open coverage/lcov-report/index.html"
@@ -34,16 +42,12 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/core": "7.21.0",
-    "@babel/preset-env": "7.20.2",
-    "@rollup/plugin-babel": "6.0.3",
-    "@rollup/plugin-commonjs": "24.0.1",
-    "@rollup/plugin-node-resolve": "15.0.1",
-    "expect.js": "0.3.1",
-    "mocha": "10.2.0",
+    "mocha": "10.4.0",
     "nyc": "15.1.0",
-    "rimraf": "4.3.0",
-    "rollup": "3.18.0"
+    "pkgroll": "^2.0.2",
+    "rimraf": "5.0.5",
+    "typescript": "^5.4.5",
+    "xo": "^0.58.0"
   },
   "keywords": [
     "socket.io",
@@ -51,5 +55,19 @@
     "msgpack",
     "parser",
     "msgpack-javascript"
-  ]
+  ],
+  "xo": {
+    "space": 4,
+    "rules": {
+      "capitalized-comments": "off",
+      "yoda": "off",
+      "no-constant-binary-expression": 2,
+      "object-curly-spacing": "off",
+      "@typescript-eslint/object-curly-spacing": "off",
+      "import/extensions": 0
+    },
+    "ignores": [
+      "dist"
+    ]
+  }
 }
