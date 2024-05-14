@@ -21,7 +21,7 @@
     "component-emitter": "2.0.0"
   },
   "scripts": {
-    "build": "rimraf dist/* && pkgroll && node ./fixup.js",
+    "build": "rimraf dist/* && tsc -p tsconfig-mjs.json && tsc -p tsconfig-cjs.json && node ./fixup.js",
     "prepare": "npm run build",
     "test": "mocha test/parser.ts test/array-buffer.ts",
     "coverage": "nyc mocha test && open coverage/lcov-report/index.html"
@@ -47,8 +47,8 @@
     "mocha": "10.4.0",
     "nyc": "15.1.0",
     "pkgroll": "^2.0.2",
-    "rimraf": "5.0.5",
-    "tsx": "^4.9.3",
+    "rimraf": "5.0.7",
+    "tsx": "^4.10.2",
     "typescript": "^5.4.5",
     "xo": "^0.58.0"
   },
