@@ -3,25 +3,26 @@
   "type": "module",
   "version": "1.2.1",
   "description": "socket.io parser based on msgpack",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/mjs/index.mjs",
-  "types": "dist/types/index.cts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "exports": {
     "require": {
-      "types": "./dist/types/index.d.cts",
-      "default": "./dist/cjs/index.cjs"
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
     },
     "import": {
-      "types": "./dist/types/index.d.mts",
-      "default": "./dist/mjs/index.mjs"
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
   "dependencies": {
     "@msgpack/msgpack": "2.8.0",
-    "component-emitter": "2.0.0"
+    "component-emitter": "2.0.0",
+    "msgpackr": "^1.10.2"
   },
   "scripts": {
-    "build": "rimraf dist/* && tsc -p tsconfig-mjs.json && tsc -p tsconfig-cjs.json && node ./fixup.js",
+    "build": "rimraf dist/* && pkgroll",
     "prepare": "npm run build",
     "test": "mocha test/parser.ts test/array-buffer.ts",
     "coverage": "nyc mocha test && open coverage/lcov-report/index.html"
