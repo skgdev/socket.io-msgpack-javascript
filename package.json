@@ -18,8 +18,7 @@
   },
   "dependencies": {
     "@msgpack/msgpack": "2.8.0",
-    "component-emitter": "2.0.0",
-    "msgpackr": "^1.10.2"
+    "component-emitter": "2.0.0"
   },
   "scripts": {
     "build": "rimraf dist/* && pkgroll",
