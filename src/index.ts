@@ -4,7 +4,7 @@ import buildDecoder from './decoder';
 import buildEncoder from './encoder';
 import { PacketType } from './packet-format';
 
-export const build = function (options: {encoder?: EncodeOptions; decoder?: DecodeOptions}) {
+const build = function (options: {encoder?: EncodeOptions; decoder?: DecodeOptions} = {}) {
     return {
         protocol: 5,
         Encoder: buildEncoder(options.encoder),
@@ -13,3 +13,9 @@ export const build = function (options: {encoder?: EncodeOptions; decoder?: Deco
         ExtensionCodec,
     };
 };
+
+const customParser = {
+    build,
+};
+
+export default customParser;

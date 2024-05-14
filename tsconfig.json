@@ -5,7 +5,7 @@
     "checkJs": true,
     "declaration": true,
     "declarationMap": true,
-    "inlineSourceMap": true,
+    "sourceMap": true,
     "removeComments": true,
     "pretty": true,
     "esModuleInterop": true,
