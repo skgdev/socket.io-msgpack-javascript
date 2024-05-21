@@ -1,5 +1,6 @@
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
 import { PacketType } from './packet-format';
-import { isObject, isString } from './type-checkers';
 
 function validatePacketData(packet: Record<string, unknown>) {
     switch (packet.type) {

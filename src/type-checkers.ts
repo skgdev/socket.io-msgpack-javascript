@@ -1,11 +1,9 @@
-export function isString(object: unknown) {
-    return 'string' === typeof object;
-}
+import isInteger from 'lodash/isInteger';
 
-export function isObject(object: unknown): object is Record<string, unknown> {
+export function isRecord(object: unknown): object is Record<string, unknown> {
     return null !== object && 'object' === typeof object && !Array.isArray(object);
 }
 
-export function isInteger(object: unknown): object is number {
-    return Number.isInteger(object);
+export function objectIsInteger(object: unknown): object is number {
+    return isInteger(object);
 }

@@ -2,9 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import msgpack from '@msgpack/msgpack';
 import Emitter from 'component-emitter';
-import { isInteger, isObject, isString } from './type-checkers';
+import isString from 'lodash/isString';
 import { PacketType } from './packet-format';
 import validatePacketData from './validate-packet-data';
+import { objectIsInteger, isRecord } from './type-checkers';
 
 export class DecoderClass extends Emitter {
     options: msgpack.DecodeOptions = {};
@@ -28,11 +29,11 @@ const buildDecoder = (options: msgpack.DecodeOptions = {}): typeof DecoderClass 
     }
 
     validatePacket(decoded: unknown) {
-        if (!isObject(decoded)) {
+        if (!isRecord(decoded)) {
             throw new Error('invalid packet');
         }
 
-        const isValidTypeField = isInteger(decoded.type)
+        const isValidTypeField = objectIsInteger(decoded.type)
                                 && decoded.type >= PacketType.CONNECT
                                 && decoded.type <= PacketType.CONNECT_ERROR;
 
@@ -48,7 +49,7 @@ const buildDecoder = (options: msgpack.DecodeOptions = {}): typeof DecoderClass 
             throw new Error('invalid packet payload');
         }
 
-        if (undefined !== decoded.id && !isInteger(decoded.id)) {
+        if (undefined !== decoded.id && !objectIsInteger(decoded.id)) {
             throw new Error('invalid packet id');
         }
     }

@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@msgpack/msgpack": "2.8.0",
-    "component-emitter": "2.0.0"
+    "component-emitter": "2.0.0",
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "build": "rimraf dist/* && pkgroll",
@@ -43,6 +44,7 @@
     "dist"
   ],
   "devDependencies": {
+    "@types/lodash": "^4.17.4",
     "@types/mocha": "^10.0.6",
     "mocha": "10.4.0",
     "nyc": "15.1.0",
