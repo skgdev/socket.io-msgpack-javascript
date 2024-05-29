@@ -17,8 +17,11 @@ Compatibility table:
 npm i -S skgdev/socket.io-msgpack-javascript
 ```
 
-## Options
+### TypeScript / Type
 
+This package doesn't has separate typing to be install, usage is the same regardless of TypeScript or normal JavaScript
+
+## Options
 ### `EncodeOptions`
 
 Name|Type|Default
@@ -31,8 +34,8 @@ forceIntegerToFloat | boolean | false
 ignoreUndefined | boolean | false
 
 See:
-- [msgpack EncodeOptions](https://github.com/msgpack/msgpack-javascript#encodeoptions)
-- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context)
+- [msgpack EncodeOptions](https://github.com/msgpack/msgpack-javascript?tab=readme-ov-file#encoderoptions)
+- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript?tab=readme-ov-file#extensioncodec-context)
 ### `DecodeOptions`
 
 Name|Type|Default
@@ -46,33 +49,42 @@ maxExtLength | number | `4_294_967_295` (UINT32_MAX)
 You can use `max${Type}Length` to limit the length of each type decoded.
 
 See:
-- [msgpack DecodeOptions](https://github.com/msgpack/msgpack-javascript#decodeoptions)
-- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript#extensioncodec-context)
+- [msgpack DecodeOptions](https://github.com/msgpack/msgpack-javascript?tab=readme-ov-file#decoderoptions)
+- [ExtensionCodec context](https://github.com/msgpack/msgpack-javascript?tab=readme-ov-file#extensioncodec-context)
 
 ## Usage
-### Example
+### Import
 ```js
-const io = require('socket.io');
-const ioc = require('socket.io-client');
+import customParser from '@skgdev/socket.io-msgpack-javascript';
+```
+### Require
+```js
 const customParser = require('@skgdev/socket.io-msgpack-javascript');
-const server = io(PORT, {
+```
+### Setup
+```js
+import { Server } from 'socket.io';
+import { io } from "socket.io-client";
+import customParser from '@skgdev/socket.io-msgpack-javascript';
+
+// Server
+const server = new Server(PORT, {
   parser: customParser.build({
-      encoder: ?EncodeOptions,
-      decoder: ?DecodeOptions
+    encoder: ?EncodeOptions,
+    decoder: ?DecodeOptions
   })
 });
 
-const socket = ioc('ws://localhost:' + PORT, {
-  parser: customParser
-});
-
-socket.on('connect', () => {
-  socket.emit('hello');
+// Client
+const socket = io('https://server-domain.com', {
+  parser: customParser.build({
+    encoder: ?EncodeOptions,
+    decoder: ?DecodeOptions
+  })
 });
 ```
 
 ### Format
-
 `socket.emit('hello', 'you')` will create the following packet:
 
 ```json
